@@ -11,3 +11,48 @@ body{
   margin-right: auto;
   padding: 0 10px;
 }
+
+.side{
+  flex:0.3;
+}
+
+.aapp header{
+  background-color: twitter-background;
+    height: 10vh;
+    min-height: 50px;
+    color: white;
+    position: fixed;
+    width: 100%;
+    /* max-width: 728px; */
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 99;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.sign___in{
+  display: flex;
+  margin-top: 100px;
+
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.sign___in button{
+
+  background-color: black;
+  color: burlywood;
+  height: 10vh;
+  width: 20vh;
+}
+
+.sign___out button{
+  background-color: black;
+  color: burlywood;
+  height: 10vh;
+  width: 20vh;
+}

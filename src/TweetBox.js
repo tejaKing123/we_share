@@ -3,21 +3,24 @@ import "./TweetBox.css";
 import { Avatar, Button } from "@material-ui/core";
 import db from "./firebase";
 
+import firebase from 'firebase/app';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+const auth = firebase.auth();
+
 function TweetBox() {
   const [tweetMessage, setTweetMessage] = useState("");
   const [tweetImage, setTweetImage] = useState("");
-
+  const { uid, photoURL } = auth.currentUser;
   const sendTweet = (e) => {
     e.preventDefault();
-
+    const imgurl=(photoURL|| 'https://api.adorable.io/avatars/23/abott@adorable.png');
     db.collection("posts").add({
       displayName: "Teja",
       username: "Teja",
       verified: true,
       text: tweetMessage,
       image: tweetImage,
-      avatar:
-        "https://i.imgur.com/uZXlIP6.png",
+      avatar:imgurl,
     });
 
     setTweetMessage("");
@@ -28,7 +31,7 @@ function TweetBox() {
     <div className="tweetBox">
       <form>
         <div className="tweetBox__input">
-          <Avatar src="https://i.imgur.com/uZXlIP6.png" />
+          <Avatar src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} />
           <input
             onChange={(e) => setTweetMessage(e.target.value)}
             value={tweetMessage}

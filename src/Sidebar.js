@@ -12,6 +12,7 @@ import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import FunctionsIcon from '@material-ui/icons/Functions';
 import { Button } from "@material-ui/core";
+import {Link} from 'react-router-dom';
 
 function Sidebar() {
     return (
@@ -20,13 +21,18 @@ function Sidebar() {
             <FunctionsIcon  className="sideBarTwitterIcon"/>
             
             {/* side bar*/}
-            <SidebarOption active Icon={HomeIcon} text="Home"/>
+            {/* <SidebarOption active Icon={HomeIcon} text="Home"/> */}
+            <Link to="/" style={{ textDecoration: 'none' }}><SidebarOption active Icon={HomeIcon} text="Home"/></Link>
             <SidebarOption Icon={SearchIcon} text="Explore"/>
             <SidebarOption Icon={NotificationsNoneIcon} text="Notifications"/>
-            <SidebarOption Icon={MailOutlineIcon} text="Messages"/>            
+            {/* <SidebarOption Icon={MailOutlineIcon} text="Messages"/> */}
+            <Link style={{ textDecoration: 'none' }} to="/chat">
+                <SidebarOption Icon={MailOutlineIcon} text="Messages"/>
+            </Link>            
             <SidebarOption Icon={BookmarkBorderIcon} text="Bookmarks" />
             <SidebarOption Icon={ListAltIcon} text="Lists" />
-            <SidebarOption Icon={PermIdentityIcon} text="Profile" />
+            {/* <SidebarOption Icon={PermIdentityIcon} text="Profile" /> */}
+            <SidebarOption Icon={PermIdentityIcon} text="Profile" ></SidebarOption>
             <SidebarOption Icon={MoreHorizIcon} text="More" />
             {/* never ever don't put empty props */}
 
