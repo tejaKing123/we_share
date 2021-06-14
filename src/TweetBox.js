@@ -10,17 +10,18 @@ const auth = firebase.auth();
 function TweetBox() {
   const [tweetMessage, setTweetMessage] = useState("");
   const [tweetImage, setTweetImage] = useState("");
-  const { uid, photoURL } = auth.currentUser;
+  const { uid,email,displayName,photoURL } = auth.currentUser;
   const sendTweet = (e) => {
     e.preventDefault();
     const imgurl=(photoURL|| 'https://api.adorable.io/avatars/23/abott@adorable.png');
     db.collection("posts").add({
-      displayName: "Teja",
-      username: "Teja",
+      displayName: displayName,
+      username: email,
       verified: true,
       text: tweetMessage,
       image: tweetImage,
       avatar:imgurl,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
     });
 
     setTweetMessage("");
@@ -39,6 +40,7 @@ function TweetBox() {
             type="text"
           />
         </div>
+        <h3>please enter url only in the 👇below box</h3>
         <input
           value={tweetImage}
           onChange={(e) => setTweetImage(e.target.value)}
