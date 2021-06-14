@@ -36,7 +36,7 @@ function TweetBox() {
           <input
             onChange={(e) => setTweetMessage(e.target.value)}
             value={tweetMessage}
-            placeholder="What's happening?"
+            placeholder="What's on your mind?"
             type="text"
           />
         </div>
