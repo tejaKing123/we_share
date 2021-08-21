@@ -1,3 +1,19 @@
 .likeing{
     color: red;
   }
+  @keyframes animatename{
+    0%{
+      transform: scale(0%) rotate(90Deg);
+    }
+    50%{
+      transform: scale(50%) rotate(180Deg);
+    }
+    100%{
+      transform: scale(100%) rotate(360Deg);
+    }
+  }
+  .my-div{
+    animation: animatename 1s linear 3;
+    /* animation shorthand */
+    animation: animation-name animation-duration animation-direction animation-iteration-count
+  }

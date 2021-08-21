@@ -12,7 +12,7 @@ const firestore = firebase.firestore();
 
 
 function Feed() {
-    const [posts,setPost]=useState([]);
+    // const [posts,setPost]=useState([]);
     const postsRef = firestore.collection('posts');
     const query = postsRef.orderBy('createdAt', "desc");
     const [postss] = useCollectionData(query, { idField: 'id' });
@@ -36,7 +36,7 @@ function Feed() {
             {/* Post */}
 
             <FlipMove>
-        {postss&&postss.map((post) => (
+        {postss&&postss.map((post) => (          
           <Post
             key={post.text}
             displayName={post.displayName}
@@ -45,9 +45,12 @@ function Feed() {
             text={post.text}
             avatar={post.avatar}
             image={post.image}
+            like={post.id}
           />
+          // console.log(post)
         ))}
       </FlipMove>
+      {/* {postss&&postss.map((post) =>(console.log(post)))} */}
             </div>        
     )
 }

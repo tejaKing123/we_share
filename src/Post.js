@@ -8,7 +8,7 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import PublishIcon from "@material-ui/icons/Publish";
 import Like from './trying/Like';
 const Post = forwardRef(
-  ({ displayName, username, verified, text, image, avatar }, ref) => {
+  ({ displayName, username, verified, text, image, avatar,like }, ref) => {
     return (
       <div className="post" ref={ref}>
         <div className="post__avatar">
@@ -33,7 +33,7 @@ const Post = forwardRef(
           <div className="post__footer">
             <ChatBubbleOutlineIcon fontSize="small" />
             <RepeatIcon fontSize="small" />
-            <Like/>
+            <Like id={like}/>
             <PublishIcon fontSize="small" />
           </div>
         </div>
