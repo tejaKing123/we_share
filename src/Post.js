@@ -29,11 +29,12 @@ const Post = forwardRef(
               <p>{text}</p>
             </div>
           </div>
-          {image?<img src={image} alt="" style={{ width:"700px",height:"800px"}}/>:null}
+          {image?<img src={image} style={{width: "100%",height: "auto",maxWidth:"900px"}}/>:null}
           <div className="post__footer">
             <ChatBubbleOutlineIcon fontSize="small" />
             <RepeatIcon fontSize="small" />
-            <Like id={like}/>
+            {/* <Like id={like}/> */}
+            <FavoriteBorderIcon fontSize="small"/>
             <PublishIcon fontSize="small" />
           </div>
         </div>
