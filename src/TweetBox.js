@@ -1,38 +1,45 @@
-import React, { useState } from "react";
-import "./TweetBox.css";
-import { Avatar, Button } from "@material-ui/core";
-import db from "./firebase";
+import React, { useState } from 'react';
+import './TweetBox.css';
+import { Avatar, Button } from '@material-ui/core';
+import db from './firebase';
 
-import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 const auth = firebase.auth();
 
 function TweetBox() {
-  const [tweetMessage, setTweetMessage] = useState("");
-  const [tweetImage, setTweetImage] = useState("");
-  const { uid,email,displayName,photoURL } = auth.currentUser;
+  const [tweetMessage, setTweetMessage] = useState('');
+  const [tweetImage, setTweetImage] = useState('');
+  const { uid, email, displayName, photoURL } = auth.currentUser;
   const sendTweet = (e) => {
     e.preventDefault();
-    const imgurl=(photoURL|| 'https://api.adorable.io/avatars/23/abott@adorable.png');
-    db.collection("posts").add({
+    const imgurl =
+      photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png';
+    db.collection('posts').add({
       displayName: displayName,
       username: email,
       verified: true,
       text: tweetMessage,
       image: tweetImage,
-      avatar:imgurl,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      avatar: imgurl,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
     });
 
-    setTweetMessage("");
-    setTweetImage("");
+    setTweetMessage('');
+    setTweetImage('');
   };
 
   return (
     <div className="tweetBox">
       <form>
         <div className="tweetBox__input">
-          <Avatar src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} />
+          <Avatar
+            src={
+              photoURL ||
+              'https://api.adorable.io/avatars/23/abott@adorable.png'
+            }
+          />
           <input
             onChange={(e) => setTweetMessage(e.target.value)}
             value={tweetMessage}
